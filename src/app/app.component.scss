@@ -1,0 +1,10 @@
+:host ::ng-deep {
+  cx-media[format="product"] img {
+    // The image size from source should be 210 * 210
+    // The Image may stretch if it has some other size
+    // Fix for ENT-3807
+
+    width: 210px !important;
+    height: 210px !important;
+  }
+}

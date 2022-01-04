@@ -1,0 +1,41 @@
+<ng-container *ngIf="pageContext$ | async as pageContext">
+  <br-page
+    [configuration]="configuration"
+    [mapping]="mapping"
+    (httpError)="onBrxHttpError($event)"
+    (state)="setVisitor($event)"
+  >
+    <ng-template let-page="page">
+      <app-header></app-header>
+        <div *ngIf="getPageTemplate(page) === 'one-column'">
+          <ng-container brComponent="main"></ng-container>
+        </div>
+        <div *ngIf="getPageTemplate(page) === 'two-column'">
+          <ng-container brComponent="top"></ng-container>
+          <div class="ProductListPageTemplate">
+            <!--  Add this changes documentation to the library -->
+            <div [ngClass]="!isCartContext(page) ? 'ProductLeftRefinements' : 'ProductListSlot'">
+              <ng-container brComponent="left"></ng-container>
+            </div>
+            <div [ngClass]="!isCartContext(page) ? 'ProductListSlot' : 'ProductLeftRefinements'">
+              <ng-container brComponent="right"></ng-container>
+            </div>
+          </div>
+          <ng-container brComponent="bottom"></ng-container>
+        </div>
+        <div *ngIf="getPageTemplate(page) === 'checkout'">
+          <ng-container brComponent="top"></ng-container>
+          <div class="MultiStepCheckoutSummaryPageTemplate">
+            <div class="BodyContent">
+              <ng-container brComponent="left"></ng-container>
+            </div>
+            <div class="SideContent">
+              <ng-container brComponent="right"></ng-container>
+            </div>
+          </div>
+          <ng-container brComponent="bottom"></ng-container>
+        </div>
+      <app-footer></app-footer>
+    </ng-template>
+  </br-page>
+</ng-container>
