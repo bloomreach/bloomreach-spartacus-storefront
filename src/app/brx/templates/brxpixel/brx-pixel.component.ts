@@ -13,7 +13,7 @@ export class BrxPixelComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {}
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     if (/^\d+$/.test(environment.accountId)) {
       (window as any).br_data = {
         page_type: `${this.pageType ?? ''}`,
@@ -26,7 +26,7 @@ export class BrxPixelComponent implements OnInit, AfterViewInit {
         (window as any).br_data.domain_key = `${environment.domainKey}`;
       }
 
-      let node = document.createElement('script');
+      const node = document.createElement('script');
       node.src = `//cdns.brsrvr.com/v1/br-trk-${environment.accountId}.js`;
       node.async = true;
       node.type = 'text/javascript';

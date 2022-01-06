@@ -3,14 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  //endpoint: 'https://spartacus-sandbox.bloomreach.io/delivery/site/v1/channels/spartacus/pages',
+  // endpoint: 'https://spartacus-sandbox.bloomreach.io/delivery/site/v1/channels/spartacus/pages',
   endpoint: 'http://localhost:8080/delivery/site/v1/channels/spartacus/pages',
   production: false,
   smEndPoint: 'https://core.dxpapi.com/api/v1/core/',
   smSuggestionEndPoint: 'https://suggest.dxpapi.com/api/',
-  accountId: "6370",
-  domainKey: "pacific_supply",
-  authKey: "1vjobidilg5gcbpn",
+  accountId: '6370',
+  domainKey: 'pacific_supply',
+  authKey: '1vjobidilg5gcbpn',
 };
 
 /*
