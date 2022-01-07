@@ -108,7 +108,7 @@
               <outputDirectory>${project.build.outputDirectory}</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${basedir}/build</directory>
+                  <directory>${basedir}/dist/brx-spartacus</directory>
                   <filtering>false</filtering>
                 </resource>
               </resources>
