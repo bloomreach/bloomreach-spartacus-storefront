@@ -162,8 +162,9 @@
                 <exclude>**/robots.txt</exclude>
                 <exclude>npm.lock</exclude>
                 <exclude>**/ADDITIONAL-LICENSES.yml</exclude>
-                <exclude>build/**</exclude>
+                <exclude>dist/**</exclude>
                 <exclude>public/_redirects</exclude>
+                <exclude>src/polyfills.ts</exclude>
               </excludes>
             </configuration>
           </plugin>
