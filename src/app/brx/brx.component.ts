@@ -22,9 +22,8 @@ import {
   OnInit,
   Optional,
 } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { BrPageComponent } from '@bloomreach/ng-sdk';
-import { Page } from '@bloomreach/spa-sdk';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Page, Configuration } from '@bloomreach/spa-sdk';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { OutletPosition } from '@spartacus/storefront';
 import { Request } from 'express';
@@ -58,7 +57,7 @@ export const ENDPOINT = new InjectionToken<string>('brXM API endpoint');
   styleUrls: ['./brx.component.scss'],
 })
 export class BrxComponent implements OnInit {
-  configuration: BrPageComponent['configuration'];
+  configuration: Configuration;
 
   outletPosition = OutletPosition;
 
@@ -87,6 +86,7 @@ export class BrxComponent implements OnInit {
 
   constructor(
     router: Router,
+    private route: ActivatedRoute,
     private routingService: RoutingService,
     @Inject(ENDPOINT) endpoint?: string,
     @Inject(REQUEST) @Optional() request?: Request
@@ -106,6 +106,9 @@ export class BrxComponent implements OnInit {
 
   ngOnInit(): void {
     this.navigationEnd.subscribe((event) => {
+      let endPointFromParams = this.route.snapshot.queryParamMap.get('endpoint');
+      if(endPointFromParams) this.configuration = { ...this.configuration, endpoint: endPointFromParams };
+   
       this.configuration = { ...this.configuration, path: event.url };
       this.brxHttpError = undefined;
       this.pageContext$ = this.routingService
