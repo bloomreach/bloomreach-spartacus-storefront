@@ -106,9 +106,9 @@ export class BrxComponent implements OnInit {
 
   ngOnInit(): void {
     this.navigationEnd.subscribe((event) => {
-      let endPointFromParams = this.route.snapshot.queryParamMap.get('endpoint');
-      if(endPointFromParams) this.configuration = { ...this.configuration, endpoint: endPointFromParams };
-   
+      const endPointFromParams = this.route.snapshot.queryParamMap.get('endpoint');
+      if (endPointFromParams) { this.configuration = { ...this.configuration, endpoint: endPointFromParams }; }
+
       this.configuration = { ...this.configuration, path: event.url };
       this.brxHttpError = undefined;
       this.pageContext$ = this.routingService
