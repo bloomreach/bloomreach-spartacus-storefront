@@ -30,7 +30,7 @@ const ngExpressEngine = NgExpressEngineDecorator.get(engine);
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): any {
   const server = express();
-  const distFolder = join(process.cwd(), 'dist/brx-spartacus');
+  const distFolder = join(process.cwd(), 'dist');
   const indexHtml = existsSync(join(distFolder, 'index.original.html'))
     ? 'index.original.html'
     : 'index';
