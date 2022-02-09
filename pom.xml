@@ -165,6 +165,7 @@
                 <exclude>dist/**</exclude>
                 <exclude>public/_redirects</exclude>
                 <exclude>src/polyfills.ts</exclude>
+                <exclude>src/_redirects</exclude>
               </excludes>
             </configuration>
           </plugin>
