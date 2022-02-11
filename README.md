@@ -5,7 +5,13 @@ for all the configuration and CLI commands.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change
+Then, build and run the app as follows:
+
+```bash
+npm ci
+npm start
+```
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change
 any of the source files.
 
 ## Getting started
