@@ -84,6 +84,7 @@
     "ansi-regex": "5.0.1",
     "glob-parent": "5.1.2",
     "node-forge": "1.0.0",
+    "karma": "6.3.16",
     "ansi-html": "https://registry.npmjs.org/ansi-html-community/-/ansi-html-community-0.0.8.tgz"
   },
   "stableVersion": "1.0.0-beta2"
