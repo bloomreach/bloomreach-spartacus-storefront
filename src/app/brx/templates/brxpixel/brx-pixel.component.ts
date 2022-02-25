@@ -29,7 +29,7 @@ export class BrxPixelComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {}
 
-	ngAfterViewInit(): void {
+  ngAfterViewInit(): void {
     const accountid = environment.libConfig.accountId;
     const domainKey = environment.libConfig.domainKey;
 
