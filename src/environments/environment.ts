@@ -27,6 +27,9 @@ export const environment = {
     accountId: '6370',
     domainKey: 'pacific_supply',
     authKey: '1vjobidilg5gcbpn',
+  },
+  appConfig: {
+    defaultLoadingTime: 2 // in seconds
   }
 };
 

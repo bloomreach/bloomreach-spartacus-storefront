@@ -23,5 +23,8 @@ export const environment = {
     accountId : "6429",
     domainKey : "brxsaas_eng01",
     authKey : "rb7krhviimqez2j6"
+  },
+  appConfig: {
+    defaultLoadingTime: 2 // in seconds
   }
 };

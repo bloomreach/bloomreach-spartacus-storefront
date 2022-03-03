@@ -28,6 +28,7 @@ const routes: Routes = [
     anchorScrolling: 'enabled',
     relativeLinkResolution: 'corrected',
     initialNavigation: 'enabled',
+    scrollPositionRestoration: 'enabled'   // Fixing the scrool restoration issue
   })],
   exports: [RouterModule]
 })
