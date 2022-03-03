@@ -86,7 +86,7 @@ export class BrxComponent implements OnInit, OnDestroy {
 
   private navigationEnd: Observable<NavigationEnd>;
 
-  showSpinner: boolean = true;
+  showSpinner = true;
   spinnerTimeout: any;
 
   constructor(
@@ -124,14 +124,14 @@ export class BrxComponent implements OnInit, OnDestroy {
             console.log('[BrxComponent.PageContext]: ', pageContext)
           )
         );
-        const timeout = +environment.appConfig.defaultLoadingTime * 1000;
-        if(event.url != '/') {   // Ignoring the spinner for the landing page
-          this.spinnerTimeout = setTimeout(() => {
-            this.showSpinner = false;
-          }, timeout);
-        } else{
+      const timeout = +environment.appConfig.defaultLoadingTime * 1000;
+      if (event.url !== '/') {   // Ignoring the spinner for the landing page
+        this.spinnerTimeout = setTimeout(() => {
           this.showSpinner = false;
-        }
+        }, timeout);
+      } else {
+          this.showSpinner = false;
+      }
     });
   }
 
@@ -152,7 +152,7 @@ export class BrxComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if(this.spinnerTimeout) {
+    if (this.spinnerTimeout) {
       clearTimeout(this.spinnerTimeout);
     }
 }
