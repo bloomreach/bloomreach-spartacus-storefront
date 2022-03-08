@@ -15,18 +15,22 @@
  */
 
 // This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+// `ng build --configuration=production` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  // endpoint: 'https://spartacus-sandbox.bloomreach.io/delivery/site/v1/channels/spartacus/pages',
-  endpoint: 'http://localhost:8080/delivery/site/v1/channels/spartacus/pages',
   production: false,
-  smEndPoint: 'https://core.dxpapi.com/api/v1/core/',
-  smSuggestionEndPoint: 'https://suggest.dxpapi.com/api/',
-  accountId: '6370',
-  domainKey: 'pacific_supply',
-  authKey: '1vjobidilg5gcbpn',
+  libConfig: {
+    endpoint: 'http://localhost:8080/delivery/site/v1/channels/spartacus/pages',
+    smEndPoint: 'https://core.dxpapi.com/api/v1/core/',
+    smSuggestionEndPoint: 'https://suggest.dxpapi.com/api/',
+    accountId: '6370',
+    domainKey: 'pacific_supply',
+    authKey: '1vjobidilg5gcbpn',
+  },
+  appConfig: {
+    defaultLoadingTime: 2 // in seconds
+  }
 };
 
 /*

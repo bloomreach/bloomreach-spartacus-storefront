@@ -19,6 +19,7 @@ import {
   Inject,
   InjectionToken,
   Input,
+  OnDestroy,
   OnInit,
   Optional,
 } from '@angular/core';
@@ -47,6 +48,7 @@ import {
 } from '@bloomreach/brx-spartacus-library';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PageContext, RoutingService } from '@spartacus/core';
+import { environment } from 'src/environments/environment';
 
 export const ENDPOINT = new InjectionToken<string>('brXM API endpoint');
 
@@ -56,7 +58,7 @@ export const ENDPOINT = new InjectionToken<string>('brXM API endpoint');
   templateUrl: './brx.component.html',
   styleUrls: ['./brx.component.scss'],
 })
-export class BrxComponent implements OnInit {
+export class BrxComponent implements OnInit, OnDestroy {
   configuration: Configuration;
 
   outletPosition = OutletPosition;
@@ -84,6 +86,9 @@ export class BrxComponent implements OnInit {
 
   private navigationEnd: Observable<NavigationEnd>;
 
+  showSpinner = true;
+  spinnerTimeout: any;
+
   constructor(
     router: Router,
     private route: ActivatedRoute,
@@ -106,6 +111,7 @@ export class BrxComponent implements OnInit {
 
   ngOnInit(): void {
     this.navigationEnd.subscribe((event) => {
+      this.showSpinner = true;
       const endPointFromParams = this.route.snapshot.queryParamMap.get('endpoint');
       if (endPointFromParams) { this.configuration = { ...this.configuration, endpoint: endPointFromParams }; }
 
@@ -118,6 +124,14 @@ export class BrxComponent implements OnInit {
             console.log('[BrxComponent.PageContext]: ', pageContext)
           )
         );
+      const timeout = +environment.appConfig.defaultLoadingTime * 1000;
+      if (event.url !== '/') {   // Ignoring the spinner for the landing page
+        this.spinnerTimeout = setTimeout(() => {
+          this.showSpinner = false;
+        }, timeout);
+      } else {
+          this.showSpinner = false;
+      }
     });
   }
 
@@ -136,4 +150,10 @@ export class BrxComponent implements OnInit {
   isCartContext(page: Page): boolean {
     return page.getUrl()?.includes('cart') || false;
   }
+
+  ngOnDestroy(): void {
+    if (this.spinnerTimeout) {
+      clearTimeout(this.spinnerTimeout);
+    }
+}
 }

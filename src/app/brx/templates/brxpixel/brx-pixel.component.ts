@@ -30,20 +30,23 @@ export class BrxPixelComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    if (/^\d+$/.test(environment.accountId)) {
+    const accountid = environment.libConfig.accountId;
+    const domainKey = environment.libConfig.domainKey;
+
+    if (/^\d+$/.test(accountid)) {
       (window as any).br_data = {
         page_type: `${this.pageType ?? ''}`,
         page_labels: `${this.pageLabels ?? ''}`,
-        acct_id: `${environment.accountId}`,
+        acct_id: `${accountid}`,
         type: `${this.type ?? ''}`,
       };
 
-      if (environment.domainKey && environment.domainKey.trim() !== '') {
-        (window as any).br_data.domain_key = `${environment.domainKey}`;
+      if (domainKey && domainKey.trim() !== '') {
+        (window as any).br_data.domain_key = `${domainKey}`;
       }
 
       const node = document.createElement('script');
-      node.src = `//cdns.brsrvr.com/v1/br-trk-${environment.accountId}.js`;
+      node.src = `//cdns.brsrvr.com/v1/br-trk-${accountid}.js`;
       node.async = true;
       node.type = 'text/javascript';
       const s = document.getElementsByTagName('script')[0];

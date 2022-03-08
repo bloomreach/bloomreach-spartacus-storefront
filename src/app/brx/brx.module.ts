@@ -40,6 +40,6 @@ import { BrxPixelComponent } from './templates/brxpixel/brx-pixel.component';
   ],
   imports: [CommonModule, BrSdkModule, RouterModule, SpartacusModule],
   exports: [BrxComponent],
-  providers: [{ provide: ENDPOINT, useValue: environment.endpoint }],
+  providers: [{ provide: ENDPOINT, useValue: environment.libConfig.endpoint }],
 })
 export class BrxModule {}

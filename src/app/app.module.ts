@@ -45,7 +45,7 @@ import { I18nModule } from '@spartacus/core';
     SpartacusModule,
     BrowserTransferStateModule,
     BrxModule,
-    BrxSpartacusLibModule.forRoot({ ...environment }),
+    BrxSpartacusLibModule.forRoot({ ...environment.libConfig }),
   ],
   bootstrap: [AppComponent]
 })
