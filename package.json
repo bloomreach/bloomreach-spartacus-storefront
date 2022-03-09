@@ -16,16 +16,16 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^12.2.4",
-    "@angular/common": "^12.2.4",
-    "@angular/compiler": "^12.2.4",
-    "@angular/core": "^12.2.4",
-    "@angular/forms": "^12.2.4",
-    "@angular/platform-browser": "^12.2.4",
-    "@angular/platform-browser-dynamic": "^12.2.4",
-    "@angular/platform-server": "^12.2.4",
-    "@angular/router": "^12.2.4",
-    "@angular/service-worker": "^12.2.4",
+    "@angular/animations": "^12.2.0",
+    "@angular/common": "^12.2.0",
+    "@angular/compiler": "^12.2.0",
+    "@angular/core": "^12.2.0",
+    "@angular/forms": "^12.2.0",
+    "@angular/platform-browser": "^12.2.0",
+    "@angular/platform-browser-dynamic": "^12.2.0",
+    "@angular/platform-server": "^12.2.0",
+    "@angular/router": "^12.2.0",
+    "@angular/service-worker": "^12.2.0",
     "@bloomreach/brx-spartacus-library": "^1.0.0-beta3",
     "@bloomreach/ng-sdk": "^15.3.1",
     "@bloomreach/spa-sdk": "^15.3.1",
@@ -56,10 +56,10 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^12.2.4",
-    "@angular-devkit/schematics": "^12.2.4",
-    "@angular/cli": "^12.2.4",
-    "@angular/compiler-cli": "^12.2.4",
+    "@angular-devkit/build-angular": "^12.2.0",
+    "@angular-devkit/schematics": "^12.2.0",
+    "@angular/cli": "^12.2.0",
+    "@angular/compiler-cli": "^12.2.0",
     "@nguniversal/builders": "^12.1.0",
     "@spartacus/schematics": "4.0.1",
     "@types/express": "^4.17.0",
@@ -83,9 +83,7 @@
     "engine.io": "4.1.2",
     "ansi-regex": "5.0.1",
     "glob-parent": "5.1.2",
-    "node-forge": "1.0.0",
-    "karma": "6.3.16",
-    "ansi-html": "https://registry.npmjs.org/ansi-html-community/-/ansi-html-community-0.0.8.tgz"
+    "node-forge": "1.0.0"
   },
   "stableVersion": "1.0.0-beta2"
 }
