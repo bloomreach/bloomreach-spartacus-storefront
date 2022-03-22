@@ -24,9 +24,9 @@ export const environment = {
     endpoint: 'http://localhost:8080/delivery/site/v1/channels/spartacus/pages',
     smEndPoint: 'https://core.dxpapi.com/api/v1/core/',
     smSuggestionEndPoint: 'https://suggest.dxpapi.com/api/',
-    accountId: '6370',
+    accountId: '6429',
     domainKey: 'pacific_supply',
-    authKey: '1vjobidilg5gcbpn',
+    authKey: 'rb7krhviimqez2j6',
   },
   appConfig: {
     defaultLoadingTime: 2 // in seconds
