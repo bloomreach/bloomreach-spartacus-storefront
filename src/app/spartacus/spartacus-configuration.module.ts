@@ -33,7 +33,7 @@ import { defaultSavedCartFormLayoutConfig } from './default-saved-cart-form-layo
           category: { paths: ['category/:categoryCode', 'category'] },
           search: { paths: ['search/:query', 'search'] },
           login: { paths: ['sign-in'] },
-          forgotPassword: { paths: ['sign-in/forgot-password'] },
+          forgotPassword: { paths: ['forgot-password'] },
           resetPassword: { paths: ['sign-in/pw/change'] },
           register: { paths: ['register'] },
         }
