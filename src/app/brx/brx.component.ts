@@ -46,7 +46,6 @@ import {
   SpartacusRegisterComponent,
   SpartacusLoginRegisterComponent,
   MyAccountMenuComponent,
-  SpartacusAddToSavedCartComponent,
   SpartacusCartCouponComponent,
   SpartacusCartDetailsComponent,
   SpartacusCartQuickOrderFormComponent,
@@ -57,7 +56,6 @@ import {
   SpartacusCheckoutProgressMobileTopComponent,
   SpartacusDeliveryModeComponent,
   SpartacusForgotPasswordComponent,
-  SpartacusImportExportOrderEntriesComponent,
   SpartacusLoginComponent,
   SpartacusMiniCartComponent,
   SpartacusOrderConfirmationItemsComponent,
@@ -69,6 +67,7 @@ import {
   SpartacusReviewSubmitComponent,
   SpartacusShippingAddressComponent,
   SpartacusWishListComponent,
+  PathwaysRecommendationsComponent
 } from '@bloomreach/brx-spartacus-library';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PageContext, RoutingService } from '@spartacus/core';
@@ -97,7 +96,7 @@ export class BrxComponent implements OnInit, OnDestroy {
     SpartacusProductDetails: SpartacusProductDetailsComponent,
     ProductHighlight: SpartacusProductHighlightComponent,
     CategoryHighlight: CategoryHighlightComponent,
-    // PathwaysRecommendations: PathwaysRecommendationsComponent,
+    PathwaysRecommendations: PathwaysRecommendationsComponent,
     SpartacusParagraph: SpartacusParagraphComponent,
     SpartacusBreadcrumb: SpartacusBreadcrumbComponent,
     menu: MenuComponent,
@@ -107,8 +106,6 @@ export class BrxComponent implements OnInit, OnDestroy {
     SpartacusCartTotals: SpartacusCartTotalsComponent,
     SpartacusCartCoupon: SpartacusCartCouponComponent,
     SpartacusCartQuickOrderForm: SpartacusCartQuickOrderFormComponent,
-    // SpartacusAddToSavedCart: SpartacusAddToSavedCartComponent,
-    // SpartacusImportExportOrderEntries: SpartacusImportExportOrderEntriesComponent,
     SpartacusUserGreet: SpartacusLoginComponent,
     SpartacusMiniCart: SpartacusMiniCartComponent,
     UserMyAccount: MyAccountMenuComponent,

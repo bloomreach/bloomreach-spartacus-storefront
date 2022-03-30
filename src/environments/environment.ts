@@ -22,7 +22,7 @@ export const environment = {
   production: false,
   libConfig: {
     endpoint: 'http://localhost:8080/delivery/site/v1/channels/spartacus/pages',
-    smEndPoint: 'https://core.dxpapi.com/api/v1/core/',
+    smEndPoint: 'https://pathways.dxpapi.com/api/',
     smSuggestionEndPoint: 'https://suggest.dxpapi.com/api/',
     accountId: '6429',
     domainKey: 'pacific_supply',
