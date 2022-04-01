@@ -17,12 +17,12 @@
 export const environment = {
   production: true,
   libConfig: {
-    endpoint: 'https://spartacus-sandbox.bloomreach.io/delivery/site/v1/channels/spartacus/pages',
+    endpoint: '', // production endpoint
     smEndPoint: 'https://pathways.dxpapi.com/api/',
     smSuggestionEndPoint: 'https://suggest.dxpapi.com/api/',
-    accountId : "6429",
-    domainKey : "brxsaas_eng01",
-    authKey : "rb7krhviimqez2j6"
+    accountId: '',  // add account Id
+    domainKey: '', // add domain Key
+    authKey: '', // add authKey
   },
   appConfig: {
     defaultLoadingTime: 2 // in seconds
