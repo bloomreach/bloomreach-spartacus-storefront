@@ -37,8 +37,8 @@ npm run build
 ```
 
 ## Other links
-* [Bloomreach Saprtacus NPM Library](https://www.npmjs.com/package/@bloomreach/brx-spartacus-library)
-* [Bloomreach Saprtacus Storefornt demo](https://brx-spartacus-latest.netlify.app/)
+* [Bloomreach Spartacus NPM Library](https://www.npmjs.com/package/@bloomreach/brx-spartacus-library)
+* [Bloomreach Spartacus Storefront demo](https://brx-spartacus-latest.netlify.app/)
 * [Bloomreach Spartacus documentation](https://documentation.bloomreach.com/content/docs/sap-spartacus)
 * [brX instance](https://spartacus-sandbox.bloomreach.io/cms/?0)
 * [Spartacus Github](https://github.com/SAP/spartacus)
