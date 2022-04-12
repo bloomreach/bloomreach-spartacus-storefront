@@ -22,7 +22,7 @@
   >
     <ng-template let-page="page">
       <app-header></app-header>
-      <div [ngClass]="{'hidden': page.isPreview() ? false : showSpinner}">
+      <div [ngClass]="{'hidden': showSpinner}">
         <div *ngIf="getPageTemplate(page) === 'one-column'">
           <ng-container brComponent="main"></ng-container>
         </div>
@@ -52,7 +52,7 @@
           <ng-container brComponent="bottom"></ng-container>
         </div>
       </div>
-      <div [ngClass]="{'hidden': page.isPreview() ? true : !showSpinner}" class="spinner"><p><i class="fas fa-spinner fa-2x fa-spin"></i> Loading ...</p></div>
+      <div [ngClass]="{'hidden': !showSpinner}" class="spinner"><p><i class="fas fa-spinner fa-2x fa-spin"></i> Loading ...</p></div>
       <app-footer></app-footer>
     </ng-template>
   </br-page>

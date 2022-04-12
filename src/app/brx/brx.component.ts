@@ -82,7 +82,7 @@ export const ENDPOINT = new InjectionToken<string>('brXM API endpoint');
   styleUrls: ['./brx.component.scss'],
 })
 export class BrxComponent implements OnInit, OnDestroy {
-  configuration: Configuration;
+  configuration!: Configuration;
 
   outletPosition = OutletPosition;
 
@@ -142,13 +142,36 @@ export class BrxComponent implements OnInit, OnDestroy {
     @Inject(ENDPOINT) endpoint?: string,
     @Inject(REQUEST) @Optional() request?: Request
   ) {
-    this.configuration = {
-      debug: true,
-      endpoint,
-      request,
-      endpointQueryParameter: 'endpoint',
-      path: router.url,
-    } as BrxComponent['configuration'];
+
+    const PREVIEW_TOKEN_KEY = 'token';
+    const PREVIEW_SERVER_ID_KEY = 'server-id';
+
+    let queryToken = '';
+    let queryServerId = '';
+
+    // Read a token and server id from the query params
+    route.queryParams
+      .subscribe(params => {
+        queryToken = params[PREVIEW_TOKEN_KEY];
+        queryServerId = params[PREVIEW_SERVER_ID_KEY];
+
+        const authorizationToken = queryToken ?? sessionStorage.getItem(PREVIEW_TOKEN_KEY);
+        const serverId = queryServerId ?? sessionStorage.getItem(PREVIEW_SERVER_ID_KEY);
+
+        if (queryToken) { sessionStorage.setItem(PREVIEW_TOKEN_KEY, queryToken); }
+        if (queryServerId) { sessionStorage.setItem(PREVIEW_SERVER_ID_KEY, queryServerId); }
+
+        this.configuration = {
+          debug: true,
+          endpoint,
+          request,
+          endpointQueryParameter: 'endpoint',
+          path: router.url,
+          ...(authorizationToken ? { authorizationToken } : {}),
+          ...(serverId ? { serverId } : {}),
+        } as BrxComponent['configuration'];
+      }
+    );
 
     this.navigationEnd = router.events.pipe(
       filter((event) => event instanceof NavigationEnd)
