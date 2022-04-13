@@ -86,6 +86,9 @@ export class BrxComponent implements OnInit, OnDestroy {
 
   outletPosition = OutletPosition;
 
+  authorizationToken!: string;
+  serverId!: string;
+
   mapping = {
     Banner: BannerComponent,
     SpartacusBanner: SpartacusBannerComponent,
@@ -145,21 +148,15 @@ export class BrxComponent implements OnInit, OnDestroy {
 
     const PREVIEW_TOKEN_KEY = 'token';
     const PREVIEW_SERVER_ID_KEY = 'server-id';
-
-    let queryToken = '';
-    let queryServerId = '';
-
+    
     // Read a token and server id from the query params
     route.queryParams
-      .subscribe(params => {
-        queryToken = params[PREVIEW_TOKEN_KEY];
-        queryServerId = params[PREVIEW_SERVER_ID_KEY];
+    .subscribe(params => {
+      let queryToken = params[PREVIEW_TOKEN_KEY];
+      let queryServerId = params[PREVIEW_SERVER_ID_KEY];
 
-        const authorizationToken = queryToken ?? sessionStorage.getItem(PREVIEW_TOKEN_KEY);
-        const serverId = queryServerId ?? sessionStorage.getItem(PREVIEW_SERVER_ID_KEY);
-
-        if (queryToken) { sessionStorage.setItem(PREVIEW_TOKEN_KEY, queryToken); }
-        if (queryServerId) { sessionStorage.setItem(PREVIEW_SERVER_ID_KEY, queryServerId); }
+      this.authorizationToken = this.authorizationToken ?? queryToken;
+      this.serverId = this.serverId ?? queryServerId;
 
         this.configuration = {
           debug: true,
@@ -167,8 +164,8 @@ export class BrxComponent implements OnInit, OnDestroy {
           request,
           endpointQueryParameter: 'endpoint',
           path: router.url,
-          ...(authorizationToken ? { authorizationToken } : {}),
-          ...(serverId ? { serverId } : {}),
+          ...(this.authorizationToken ? { authorizationToken : this.authorizationToken } : {}),
+          ...(this.serverId ? { serverId : this.serverId } : {}),
         } as BrxComponent['configuration'];
       }
     );
