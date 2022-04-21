@@ -86,8 +86,8 @@ export class BrxComponent implements OnInit, OnDestroy {
 
   outletPosition = OutletPosition;
 
-  authorizationToken!: string;
-  serverId!: string;
+  authorizationToken?: string;
+  serverId?: string;
 
   mapping = {
     Banner: BannerComponent,
@@ -146,33 +146,33 @@ export class BrxComponent implements OnInit, OnDestroy {
     @Inject(REQUEST) @Optional() request?: Request
   ) {
 
-    const PREVIEW_TOKEN_KEY = 'token';
-    const PREVIEW_SERVER_ID_KEY = 'server-id';
-    
-    // Read a token and server id from the query params
-    route.queryParams
-    .subscribe(params => {
-      let queryToken = params[PREVIEW_TOKEN_KEY];
-      let queryServerId = params[PREVIEW_SERVER_ID_KEY];
+     const PREVIEW_TOKEN_KEY = 'token';
+     const PREVIEW_SERVER_ID_KEY = 'server-id';
 
-      this.authorizationToken = this.authorizationToken ?? queryToken;
-      this.serverId = this.serverId ?? queryServerId;
+    // Read a token and server id from the query params
+     route.queryParams
+      .subscribe(params => {
+        const queryToken = params[PREVIEW_TOKEN_KEY];
+        const queryServerId = params[PREVIEW_SERVER_ID_KEY];
+
+        this.authorizationToken = this.authorizationToken ?? queryToken;
+        this.serverId = this.serverId ?? queryServerId;
 
         this.configuration = {
-          debug: true,
-          endpoint,
-          request,
-          endpointQueryParameter: 'endpoint',
-          path: router.url,
-          ...(this.authorizationToken ? { authorizationToken : this.authorizationToken } : {}),
-          ...(this.serverId ? { serverId : this.serverId } : {}),
-        } as BrxComponent['configuration'];
-      }
-    );
+            debug: true,
+            endpoint,
+            request,
+            endpointQueryParameter: 'endpoint',
+            path: router.url,
+            ...(this.authorizationToken ? { authorizationToken : this.authorizationToken } : {}),
+            ...(this.serverId ? { serverId : this.serverId } : {}),
+          } as BrxComponent['configuration'];
+        }
+      );
 
-    this.navigationEnd = router.events.pipe(
-      filter((event) => event instanceof NavigationEnd)
-    ) as Observable<NavigationEnd>;
+     this.navigationEnd = router.events.pipe(
+        filter((event) => event instanceof NavigationEnd)
+      ) as Observable<NavigationEnd>;
   }
 
   ngOnInit(): void {
