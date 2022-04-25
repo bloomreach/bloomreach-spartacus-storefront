@@ -21,7 +21,7 @@
     (state)="setVisitor($event)"
   >
     <ng-template let-page="page">
-      <app-header></app-header>
+      <app-header [token]="authorizationToken"></app-header>
       <div [ngClass]="{'hidden': showSpinner}">
         <div *ngIf="getPageTemplate(page) === 'one-column'">
           <ng-container brComponent="main"></ng-container>
