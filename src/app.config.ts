@@ -14,18 +14,15 @@
  * limitations under the License.
  */
 
-export const environment = {
-  production: true,
-  netlifyEnvUrl: '',
-  libConfig: {
-    endpoint: '', // production endpoint
-    smEndPoint: 'https://pathways.dxpapi.com/api/',
-    smSuggestionEndPoint: 'https://suggest.dxpapi.com/api/',
-    accountId: '',  // add account Id
-    domainKey: '', // add domain Key
-    authKey: '', // add authKey
-  },
-  appConfig: {
-    defaultLoadingTime: 2 // in seconds
-  }
-};
+import { InjectionToken } from '@angular/core';
+
+export interface LibConfig {
+  endpoint: string;
+  smEndPoint: string;
+  smSuggestionEndPoint: string;
+  accountId: string;
+  domainKey: string;
+  authKey: string;
+}
+
+export let APP_CONFIG = new InjectionToken<LibConfig>('APP_CONFIG');

@@ -67,11 +67,12 @@ import {
   SpartacusReviewSubmitComponent,
   SpartacusShippingAddressComponent,
   SpartacusWishListComponent,
-  PathwaysRecommendationsComponent
+  PathwaysRecommendationsComponent,
 } from '@bloomreach/brx-spartacus-library';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PageContext, RoutingService } from '@spartacus/core';
 import { environment } from 'src/environments/environment';
+import { EnvConfigService } from '../services/env-config.service';
 
 export const ENDPOINT = new InjectionToken<string>('brXM API endpoint');
 
@@ -88,7 +89,7 @@ export class BrxComponent implements OnInit, OnDestroy {
 
   authorizationToken?: string;
   serverId?: string;
-
+  endpointFromParams?: string;
   mapping = {
     Banner: BannerComponent,
     SpartacusBanner: SpartacusBannerComponent,
@@ -142,7 +143,7 @@ export class BrxComponent implements OnInit, OnDestroy {
     router: Router,
     private route: ActivatedRoute,
     private routingService: RoutingService,
-    @Inject(ENDPOINT) endpoint?: string,
+    private envConfigService: EnvConfigService,
     @Inject(REQUEST) @Optional() request?: Request
   ) {
 
@@ -160,7 +161,7 @@ export class BrxComponent implements OnInit, OnDestroy {
 
         this.configuration = {
             debug: true,
-            endpoint,
+            endpoint: environment.libConfig.endpoint,
             request,
             endpointQueryParameter: 'endpoint',
             path: router.url,
@@ -178,8 +179,12 @@ export class BrxComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.navigationEnd.subscribe((event) => {
       this.showSpinner = true;
-      const endPointFromParams = this.route.snapshot.queryParamMap.get('endpoint');
-      if (endPointFromParams) { this.configuration = { ...this.configuration, endpoint: endPointFromParams }; }
+
+      this.endpointFromParams = this.route.snapshot.queryParamMap.get('endpoint') || undefined;
+      this.configuration = {
+        ...this.configuration,
+        endpoint: this.endpointFromParams ? this.endpointFromParams : this.envConfigService.config.endpoint
+      };
 
       this.configuration = { ...this.configuration, path: event.url };
       this.brxHttpError = undefined;
@@ -202,6 +207,7 @@ export class BrxComponent implements OnInit, OnDestroy {
   }
 
   setVisitor(page?: Page): void {
+    if (page) { this.envConfigService.setEnvVariables(page.getChannelParameters(), this.endpointFromParams); }
     this.configuration.visitor = page?.getVisitor();
   }
 

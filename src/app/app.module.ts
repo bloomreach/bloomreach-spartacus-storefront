@@ -26,8 +26,8 @@ import { AppComponent } from './app.component';
 import { BrxModule } from './brx/brx.module';
 import { SpartacusModule } from './spartacus/spartacus.module';
 import { NewsPageComponent } from './pages/news-page/news-page.component';
-import { environment } from '../environments/environment';
 import { I18nModule } from '@spartacus/core';
+import { EnvConfigService } from './services/env-config.service';
 
 @NgModule({
   declarations: [
@@ -45,8 +45,13 @@ import { I18nModule } from '@spartacus/core';
     SpartacusModule,
     BrowserTransferStateModule,
     BrxModule,
-    BrxSpartacusLibModule.forRoot({ ...environment.libConfig }),
+    BrxSpartacusLibModule,
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private envConfigService: EnvConfigService) {
+    // Initilize Environemnt variables
+    this.envConfigService.initilizeConfigFromNetlify();
+  }
+ }
