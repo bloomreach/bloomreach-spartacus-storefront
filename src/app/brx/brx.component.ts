@@ -207,7 +207,7 @@ export class BrxComponent implements OnInit, OnDestroy {
   }
 
   setVisitor(page?: Page): void {
-    if (page) { this.envConfigService.setEnvVariables(page.getChannelParameters(), this.endpointFromParams); }
+    if (page && this.endpointFromParams) { this.envConfigService.setEnvVariables(page.getChannelParameters(), this.endpointFromParams); }
     this.configuration.visitor = page?.getVisitor();
   }
 
