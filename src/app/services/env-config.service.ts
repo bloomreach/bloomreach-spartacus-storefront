@@ -49,7 +49,6 @@ export class EnvConfigService {
       domainKey: netlifyVariables.domainKey || envVariables.domainKey,
       authKey: netlifyVariables.authKey || envVariables.authKey,
     };
-    
     this.setEnvConfigInLibrary();
   }
 
