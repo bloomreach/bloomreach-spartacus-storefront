@@ -22,6 +22,7 @@ import { environment } from 'src/environments/environment';
 
 export interface ChannelProps {
   graphql_baseurl: string;
+  graphqlTenantName: string;
   discoveryAccountId: string;
   discoveryDomainKey: string;
   discoveryRealm: string;
