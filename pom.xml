@@ -153,13 +153,7 @@
                 <configuration>
                   <filesets>
                     <fileset>
-                      <directory>dist</directory>
-                    </fileset>
-                    <fileset>
                       <directory>node</directory>
-                    </fileset>
-                    <fileset>
-                      <directory>node_modules</directory>
                     </fileset>
                   </filesets>
                 </configuration>
